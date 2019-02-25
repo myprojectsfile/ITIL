@@ -1,0 +1,29 @@
+{
+  "name": "itps",
+  "version": "1.4.0",
+  "description": "ITSM Parse Server",
+  "main": "server.js",
+  "repository": {
+    "type": "git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "~4.11.x",
+    "express-ntlm": "^2.3.0",
+    "kerberos": "~0.0.x",
+    "parse": "~1.8.0",
+    "parse-server": "*",
+    "password-generator": "^2.2.0"
+  },
+  "scripts": {
+    "api": "nodemon server.js",
+    "dash": "parse-dashboard --appId UCZVB5TLA4 --masterKey 5n84nvuhXrRt2C5L --serverURL \"http://localhost:1337/parse\" --appName ITSM"
+  },
+  "engines": {
+    "node": ">=4.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}
