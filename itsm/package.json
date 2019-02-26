@@ -7,13 +7,17 @@
   "private": true,
   "scripts": {
     "lint": "eslint --fix --ext .js,.vue src",
-    "dev": "quasar dev"
+    "dev": "quasar dev",
+    "start": "node server.js"
   },
   "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.3.4",
     "axios": "^0.18.0",
+    "connect-history-api-fallback": "^1.6.0",
+    "express": "^4.16.4",
     "parse": "^2.2.1",
+    "serve-static": "^1.13.2",
     "vue-i18n": "^8.8.0"
   },
   "devDependencies": {

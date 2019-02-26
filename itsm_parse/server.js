@@ -4,6 +4,7 @@ var path = require('path');
 const serverConfig = require('./server.config')
 const cors = require('cors')
 const ntlm = require('express-ntlm')
+const history = require('connect-history-api-fallback')
 
 var api = new ParseServer({
   databaseURI: process.env.PARSE_ITSM_DB_URI || serverConfig.PARSE_ITSM_DB_URI,
@@ -21,6 +22,7 @@ var api = new ParseServer({
 
 var app = express();
 app.use(cors({ origin: 'http://localhost:8080' }))
+// app.use(history())
 
 // Serve static assets from the /public folder
 app.use('/public', express.static(path.join(__dirname, '/public')));
@@ -31,7 +33,7 @@ app.use(mountPath, api);
 
 // Parse Server plays nicely with the rest of your web routes
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname + '/public/index.html'));
+  res.sendFile(path.join(__dirname + '/public/spa-mat/index.html'));
 });
 // Config NTLM
 if (serverConfig.USE_NTLM) {
