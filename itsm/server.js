@@ -8,7 +8,7 @@ var ntlm = require('express-ntlm')
 const serverConfig = require('./server.config')
 var NodeSSPI = require('node-sspi')
 // const CircularJSON = require('circular-json')
-const auth = require('./auth')
+// const auth = require('./auth')
 const cors = require('cors')
 
 var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI
