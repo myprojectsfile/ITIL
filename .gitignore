@@ -78,6 +78,6 @@ build/Release
 node_modules
 **/node_modules
 
-
+**/public/spa-mat
 # Emacs
 *~
