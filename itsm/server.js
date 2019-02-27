@@ -10,16 +10,6 @@ const
 
 const app = express()
 
-// if (serverConfig.USE_NTLM) {
-//   app.use(ntlm({
-//     debug: function () {
-//       var args = Array.prototype.slice.apply(arguments)
-//       console.log.apply(null, args)
-//     },
-//     domain: serverConfig.DOMAIN,
-//     domaincontroller: serverConfig.DOMAIN_CONTROLLER
-//   }))
-// }
 app.use(cors({
   credentials: true,
   origin: ['http://localhost:8080', 'http://localhost:5000', 'http://127.0.0.1:8080']
@@ -33,7 +23,6 @@ app.use('/api/ntlm', ntlm({
   domain: serverConfig.DOMAIN,
   domaincontroller: serverConfig.DOMAIN_CONTROLLER
 }), (req, res) => {
-  console.log(JSON.stringify(req.headers))
   if (serverConfig.USE_NTLM) {
     res.end(JSON.stringify(req.ntlm))
   } else res.end('NTLM Not Enabled')

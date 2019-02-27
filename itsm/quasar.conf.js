@@ -37,10 +37,12 @@ module.exports = function (ctx) {
       // }
       env: ctx.dev
         ? { // so on dev we'll have
-          ParseAPI: JSON.stringify('https://dev.api.com')
+          ParseAPI: JSON.stringify('https://dev.api.com'),
+          NTLMApi: JSON.stringify('http://localhost:5000')
         }
         : { // and on build (production):
-          ParseAPI: JSON.stringify('https://prod.api.com')
+          ParseAPI: JSON.stringify('https://prod.api.com'),
+          NTLMApi: JSON.stringify('http://localhost:5000')
         }
     },
     devServer: {
