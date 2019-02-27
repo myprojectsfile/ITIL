@@ -5,7 +5,8 @@ const routes = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     beforeEnter: (to, from, next) => {
-      axios.get('/ntlm')
+      // axios.get('/api/ntlm', {withCredentials: true})
+      axios.get('http://127.0.0.1:5000/api/ntlm', {withCredentials: true})
         .then(
           (result) => {
             console.log(result)

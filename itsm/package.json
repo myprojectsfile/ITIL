@@ -8,13 +8,14 @@
   "scripts": {
     "lint": "eslint --fix --ext .js,.vue src",
     "dev": "quasar dev",
-    "start": "node server.js"
+    "server": "nodemon server.js"
   },
   "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.3.4",
     "axios": "^0.18.0",
     "connect-history-api-fallback": "^1.6.0",
+    "cors": "^2.8.5",
     "express": "^4.16.4",
     "express-ntlm": "^2.3.0",
     "parse": "^2.2.1",
@@ -33,6 +34,7 @@
     "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-standard": "^3.0.1",
     "eslint-plugin-vue": "^4.3.0",
+    "nodemon": "^1.18.10",
     "quasar-cli": "^0.17.0",
     "strip-ansi": "=3.0.1"
   },

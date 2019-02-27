@@ -4,6 +4,7 @@ const ServerConfig = {
   PARSE_ITSM_DB_URI: 'mongodb://localhost:27017/itsmDB',
   PARSE_ITSM_SERVER_URI: 'http://localhost:1337/parse',
   PARSE_ITSM_SERVER_PORT: 1337,
+  ITSM_APP_SERVER_PORT: 5000,
   PARSE_ITSM_MOUNT: '/parse',
   USE_NTLM: true,
   USE_SSPI: false,
