@@ -1,4 +1,5 @@
 import axios from 'axios'
+import Parse from '../store/parse-init'
 
 const routes = [
   {
@@ -10,7 +11,10 @@ const routes = [
       axios.get(uri, { withCredentials: true })
         .then(
           (result) => {
-            console.log(result)
+            console.log(result.data)
+
+            Parse.User.logIn(result.data.username, result.data.password).then((user) => { console.log(user) })
+
             next()
           },
           (error) => {
