@@ -1,20 +1,22 @@
 import axios from 'axios'
-import Parse from '../store/parse-init'
+import {logInAsync} from '../store/auth/actions'
+import Store from '../store/index'
 
 const routes = [
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     beforeEnter: (to, from, next) => {
-      // axios.get('/api/ntlm', {withCredentials: true})
       const uri = process.env.NTLMApi + '/api/ntlm'
-      axios.get(uri, { withCredentials: true })
+      axios.get(uri, { withCredentials: true, keepAlive: true })
         .then(
           (result) => {
-            console.log(result.data)
-
-            Parse.User.logIn(result.data.username, result.data.password).then((user) => { console.log(user) })
-
+            const user = result.data.username
+            const pass = result.data.password
+            const payload = {username: user, password: pass}
+            logInAsync(payload).then((user) => {
+              Store.commit('auth/logIn', user)
+            })
             next()
           },
           (error) => {

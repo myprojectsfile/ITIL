@@ -30,7 +30,7 @@
 </style>
 
 <script>
-// import { mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 import { createIncident } from '../store/api/actions'
 
 export default {
@@ -42,11 +42,11 @@ export default {
     }
   },
   methods: {
-    // ...mapActions({
-    //   logIn: 'auth/logIn',
-    //   logOut: 'auth/logOut',
-    //   createIncident: 'api/createIncident'
-    // }),
+    ...mapActions({
+      logIn: 'auth/logIn',
+      logOut: 'auth/logOut',
+      createIncident: 'api/createIncident'
+    }),
     createNewIncident: payload => {
       createIncident(payload).then(
         () => {
