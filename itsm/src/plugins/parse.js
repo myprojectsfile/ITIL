@@ -1,6 +1,8 @@
 import Parse from 'parse'
-Parse.initialize('UCZVB5TLA4')
-Parse.serverURL = 'http://localhost:1337/parse'
+import * as ServerConfig from '../../server.config'
+
+Parse.initialize(ServerConfig.ITSM_PARSE_APP_ID)
+Parse.serverURL = ServerConfig.PARSE_ITSM_SERVER_URI
 
 export default ({ Vue }) => {
   Vue.prototype.$parse = Parse

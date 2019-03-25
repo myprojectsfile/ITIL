@@ -1,21 +1,34 @@
 import axios from 'axios'
+import {
+  logInAsync
+} from '../store/auth/actions'
+import Store from '../store/index'
 
+<<
+<< << < HEAD
 const routes = [{
   path: '/',
   component: () => import('layouts/MainLayout.vue'),
   beforeEnter: (to, from, next) => {
-    // axios.get('/api/ntlm', {withCredentials: true})
     const uri = process.env.NTLMApi + '/api/ntlm'
     axios.get(uri, {
-      withCredentials: true
-    })
+        withCredentials: true,
+        keepAlive: true
+      })
       .then(
         (result) => {
-          console.log(result)
+          const user = result.data.username
+          const pass = result.data.password
+          const payload = {
+            username: user,
+            password: pass
+          }
+          logInAsync(payload).then((user) => {
+            Store.commit('auth/logIn', user)
+          })
           next()
         },
         (error) => {
-          console.log(error.response.status)
           if (error.response.status === 307) {
             next('/login')
           } else {

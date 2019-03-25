@@ -16,3 +16,7 @@ export const logIn = ({commit}, payload) => {
     },
     () => {})
 }
+
+export const logInAsync = (payload) => {
+  return Parse.User.logIn(payload.username, payload.password)
+}

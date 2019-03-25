@@ -8,7 +8,7 @@
         <q-toolbar-title>ITSM
           <div slot="subtitle">سامانه مدیریت خدمات فناوری اطلاعات &nbsp; 0.1.1</div>
         </q-toolbar-title>
-        <!-- <q-toolbar-title>{{isLoggedIn?currentUser.attributes.username:''}} is logged in:{{isLoggedIn}}</q-toolbar-title> -->
+        <q-toolbar-title>{{isLoggedIn?currentUser.attributes.username:''}} is logged in:{{isLoggedIn}}</q-toolbar-title>
       </q-toolbar>
     </q-layout-header>
     <q-layout-drawer
@@ -56,7 +56,7 @@
 </template>
 <script>
 import { openURL } from 'quasar'
-// import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'MainLayout',
@@ -85,14 +85,14 @@ export default {
   //   console.log(`----------------> before route update`)
   // },
   methods: {
-    // ...mapActions({ logOut: 'auth/logOut' }),
+    ...mapActions({ logOut: 'auth/logOut' }),
     openURL
   },
   computed: {
-    // ...mapGetters({
-    //   currentUser: 'auth/currentUser',
-    //   isLoggedIn: 'auth/isLoggedIn'
-    // })
+    ...mapGetters({
+      currentUser: 'auth/currentUser',
+      isLoggedIn: 'auth/isLoggedIn'
+    })
   }
 }
 </script>
