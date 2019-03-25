@@ -4,17 +4,15 @@ import {
 } from '../store/auth/actions'
 import Store from '../store/index'
 
-<<
-<< << < HEAD
 const routes = [{
   path: '/',
   component: () => import('layouts/MainLayout.vue'),
   beforeEnter: (to, from, next) => {
     const uri = process.env.NTLMApi + '/api/ntlm'
     axios.get(uri, {
-        withCredentials: true,
-        keepAlive: true
-      })
+      withCredentials: true,
+      keepAlive: true
+    })
       .then(
         (result) => {
           const user = result.data.username
