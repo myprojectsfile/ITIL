@@ -3,14 +3,17 @@ const serverConfig = require('./server.config'),
   generator = require('password-generator')
 
 // Initialize Parse Server
-const parseAppId = process.env.ITSM_PARSE_APP_ID || serverConfig.ITSM_PARSE_APP_ID
-const parseMasterKey = process.env.ITSM_PARSE_MASTER_KEY || serverConfig.ITSM_PARSE_MASTER_KEY
+const parseAppId =
+  process.env.ITSM_PARSE_APP_ID || serverConfig.ITSM_PARSE_APP_ID
+const parseMasterKey =
+  process.env.ITSM_PARSE_MASTER_KEY || serverConfig.ITSM_PARSE_MASTER_KEY
 Parse.initialize(parseAppId, null, parseMasterKey)
-Parse.serverURL = process.env.PARSE_ITSM_SERVER_URI || serverConfig.PARSE_ITSM_SERVER_URI
+Parse.serverURL =
+  process.env.ITSM_PARSE_SERVER_URI || serverConfig.ITSM_PARSE_SERVER_URI
 
 // check if user a is member of AD
 // function checkUserOfAD (username) {
-//   const prefix = serverConfig.DOMAIN_USER_PREFIX.toUpperCase() + '\\'
+//   const prefix = serverConfig.ITSM_DOMAIN_USER_PREFIX.toUpperCase() + '\\'
 //   const usernameUpp = username.toUpperCase()
 //   return usernameUpp.startsWith(prefix)
 // }
@@ -69,11 +72,13 @@ async function signUpUser (username) {
 async function authByAD (username) {
   // Check if user is exist in parse db
   const [userexist, parseUser] = await checkIsUserExistInParse(username)
-  if (userexist) { // Yes user exist
+  if (userexist) {
+    // Yes user exist
     // Reset password and send via response
     const newPassword = await resetPassword(parseUser)
     return newPassword
-  } else { // No user doesnot exist
+  } else {
+    // No user doesnot exist
     // Signup the user with default password
     let newPassword = await signUpUser(username)
     // Update user gropus
