@@ -27,7 +27,7 @@ const routes = [{
           next()
         },
         (error) => {
-          if (error.response.status === 307) {
+          if (error.response.status === 307 || error.response.status === 401) {
             next('/login')
           } else {
             next(error)

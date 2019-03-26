@@ -21,17 +21,34 @@
       >
         <q-input type="password" v-model="password"/>
       </q-field>
-      <q-btn class="col-12 q-mt-xl" color="primary" size="sm" label="ورود به سامانه"/>
+      <q-btn
+        class="col-12 q-mt-xl"
+        color="primary"
+        size="sm"
+        label="ورود به سامانه"
+        @click="signIn"
+      />
     </div>
   </q-page>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   data () {
     return {
       username: '',
       password: ''
+    }
+  },
+  methods: {
+    ...mapActions({ logIn: 'auth/logIn' }),
+    signIn () {
+      this.logIn({
+        username: this.username,
+        password: this.password
+      })
     }
   }
 }

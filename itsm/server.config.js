@@ -9,7 +9,6 @@ const ServerConfig = {
   ITSM_AUTH_WITH_AD: false,
   ITSM_DOMAIN_CONTROLLER: 'ldap://10.1.1.110:389',
   ITSM_DOMAIN: 'bpmo.local',
-  // ITSM_DOMAIN_USER_PREFIX: 'DESKTOP-9MHHSMS',
   ITSM_DOMAIN_USER_PREFIX: 'BPMO'
 }
 

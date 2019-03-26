@@ -5,7 +5,8 @@
         <q-btn flat dense round @click="rightDrawerOpen = !rightDrawerOpen" aria-label="Menu">
           <q-icon name="menu"/>
         </q-btn>
-        <q-toolbar-title>ITSM
+        <q-toolbar-title>
+          ITSM
           <div slot="subtitle">سامانه مدیریت خدمات فناوری اطلاعات &nbsp; 0.1.1</div>
         </q-toolbar-title>
         <q-toolbar-title>{{isLoggedIn?currentUser.attributes.username:''}} is logged in:{{isLoggedIn}}</q-toolbar-title>
@@ -55,8 +56,8 @@
   </q-layout>
 </template>
 <script>
-import { openURL } from 'quasar'
-import { mapGetters, mapActions } from 'vuex'
+import { openURL } from 'quasar';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'MainLayout',
@@ -67,23 +68,6 @@ export default {
       miniState: true
     }
   },
-  // beforeRouteEnter (to, from, next) {
-  //   // getPost(to.params.id, (err, post) => {
-  //   //   next(vm => vm.setData(err, post))
-  //   // })
-  //   console.log(`----------------> before route enter`)
-  //   next()
-  // },
-  // when route changes and this component is already rendered,
-  // the logic will be slightly different.
-  // beforeRouteUpdate (to, from, next) {
-  //   this.post = null
-  //   // getPost(to.params.id, (err, post) => {
-  //   //   this.setData(err, post)
-  //   //   next()
-  //   // })
-  //   console.log(`----------------> before route update`)
-  // },
   methods: {
     ...mapActions({ logOut: 'auth/logOut' }),
     openURL
