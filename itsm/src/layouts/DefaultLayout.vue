@@ -17,7 +17,7 @@
   </q-layout>
 </template>
 <script>
-import { openURL } from 'quasar';
+import { openURL } from 'quasar'
 // import { mapGetters, mapActions } from 'vuex'
 
 export default {

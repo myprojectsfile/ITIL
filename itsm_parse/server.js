@@ -7,6 +7,8 @@ const ntlm = require("express-ntlm");
 
 var api = new ParseServer({
   databaseURI: process.env.ITSM_PARSE_DB_URI || serverConfig.ITSM_PARSE_DB_URI,
+  restAPIKey: process.env.ITSM_PARSE_REST_API_KEY || serverConfig.ITSM_PARSE_REST_API_KEY,
+  javascriptKey: process.env.ITSM_PARSE_JAVASCRIPT_KEY || serverConfig.ITSM_PARSE_JAVASCRIPT_KEY,
   cloud: process.env.CLOUD_CODE_MAIN || __dirname + "/cloud/main.js",
   appId: process.env.ITSM_PARSE_APP_ID || serverConfig.ITSM_PARSE_APP_ID,
   masterKey: process.env.ITSM_PARSE_MASTER_KEY || serverConfig.ITSM_PARSE_MASTER_KEY,

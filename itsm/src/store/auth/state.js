@@ -1,4 +1,6 @@
-import Parse from '../parse-init'
+import {
+  Parse
+} from '../../plugins/parse'
 
 export default {
   currentUser: Parse.User.current(),

@@ -26,7 +26,7 @@
         color="primary"
         size="sm"
         label="ورود به سامانه"
-        @click="signIn"
+        @click="logIn({username:username,password:password})"
       />
     </div>
   </q-page>
@@ -34,6 +34,10 @@
 
 <script>
 import { mapActions } from 'vuex';
+// import Parse from 'parse';
+
+// Parse.initialize('UCZVB5TLA4', 'GTM456KILKD32')
+// Parse.serverURL = 'http://localhost:1337/parse';
 
 export default {
   data () {
@@ -43,13 +47,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions({ logIn: 'auth/logIn' }),
-    signIn () {
-      this.logIn({
-        username: this.username,
-        password: this.password
-      })
-    }
+    ...mapActions({ logIn: 'auth/logIn' })
   }
 }
 </script>

@@ -13,8 +13,8 @@
     "express": "~4.11.x",
     "express-ntlm": "^2.3.0",
     "kerberos": "~0.0.x",
-    "parse": "~1.8.0",
-    "parse-server": "*",
+    "parse": "^2.2.1",
+    "parse-server": "~2.2.6",
     "password-generator": "^2.2.0",
     "serve-static": "^1.13.2"
   },

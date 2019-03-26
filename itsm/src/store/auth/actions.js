@@ -1,9 +1,9 @@
-import Parse from '../parse-init'
+import Parse from 'parse'
 
 export const logOut = ({
   commit
 }) => {
-  Parse.User.logOut().then(
+  this.$parse.logOut().then(
     () => {
       commit('logOut')
     },
