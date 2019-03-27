@@ -33,11 +33,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
-// import Parse from 'parse';
-
-// Parse.initialize('UCZVB5TLA4', 'GTM456KILKD32')
-// Parse.serverURL = 'http://localhost:1337/parse';
+import { mapActions } from 'vuex'
 
 export default {
   data () {
@@ -46,8 +42,18 @@ export default {
       password: ''
     }
   },
+  props: ['redirectTo'],
   methods: {
-    ...mapActions({ logIn: 'auth/logIn' })
+    ...mapActions({ logInAsync: 'auth/logIn' }),
+    logIn () {
+      this.logInAsync({
+        username: this.username,
+        password: this.password
+      }).then(user => {
+        console.log(this.$route.redirectTo)
+        this.$router.push('/')
+      })
+    }
   }
 }
 </script>

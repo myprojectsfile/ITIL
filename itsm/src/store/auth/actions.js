@@ -3,32 +3,28 @@ import Parse from 'parse'
 export const logOut = ({
   commit
 }) => {
-  this.$parse.logOut().then(
-    () => {
-      commit('logOut')
-    },
-    () => {})
+  return new Promise((resolve, reject) => {
+    Parse.User.logOut().then(
+      () => {
+        commit('logOut')
+        resolve()
+      },
+      (error) => {
+        reject(error)
+      })
+  })
 }
 
 export const logIn = ({
   commit
 }, payload) => {
-  Parse.User.logIn(payload.username, payload.password).then(
-    (user) => {
-      console.log(user)
+  return new Promise((resolve, reject) => {
+    Parse.User.logIn(payload.username, payload.password).then((user) => {
       commit('logIn', user)
+      resolve(user)
     },
     (error) => {
-      console.log(`errro in logIn Action:${error}`)
+      reject(error)
     })
-}
-
-export const logInAsync = (payload) => {
-  return Parse.User.logIn(payload.username, payload.password)
-}
-
-export const logInAsync2 = ({
-  commit
-}, payload) => {
-  return Parse.User.logIn(payload.username, payload.password)
+  })
 }

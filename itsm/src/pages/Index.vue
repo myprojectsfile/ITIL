@@ -15,7 +15,7 @@
           <q-btn color="pink q-mr-sm" @click="logIn({username:'Ahmadi.Mohammad',password:'123'})">
             <q-icon name="account_circle" size="1.5rem"/>&nbsp;ورود به سامانه
           </q-btn>
-          <q-btn color="primary q-mr-sm" @click="logOut()">
+          <q-btn color="primary q-mr-sm" @click="signOut()">
             <q-icon name="account_circle" size="1.5rem"/>&nbsp;خروج
           </q-btn>
           <q-btn color="secondary" @click="createNewIncident({title:'hang my pc'})">
@@ -30,8 +30,8 @@
 </style>
 
 <script>
-import { mapActions } from 'vuex';
-import { createIncident } from '../store/api/actions';
+import { mapActions } from 'vuex'
+import { createIncident } from '../store/api/actions'
 
 export default {
   name: 'PageIndex',
@@ -56,6 +56,12 @@ export default {
           console.log(error)
         }
       )
+    },
+    signOut () {
+      this.logOut().then(() => {
+        this.$router.replace('/')
+        document.location.reload()
+      })
     }
   },
   computed: {
